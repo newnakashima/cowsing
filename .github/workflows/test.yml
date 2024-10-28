@@ -1,0 +1,23 @@
+name: Rust
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install Rust
+      run: rustup update stable
+    - name: Change directory to the location of Cargo.toml
+      run: cd /home/runner/work/cowsing/cowsing
+    - name: Run tests
+      run: cargo test
